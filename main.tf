@@ -1,3 +1,24 @@
+terraform {
+  required_providers {
+    scaleway = {
+      source = "scaleway/scaleway"
+      version = "2.4.0"
+    }
+  }
+
+  backend "remote" {
+    organization = "rtrm"
+    workspaces {
+      name = "satisfactory-server-scaleway"
+    }
+  }
+}
+
+provider "scaleway" {
+  # Configuration options
+}
+
+
 # resource "scaleway_instance_volume" "data" {
 #   size_in_gb = 100
 #   type = "b_ssd"
