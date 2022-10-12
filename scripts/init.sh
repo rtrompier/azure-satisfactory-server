@@ -72,7 +72,7 @@ else
     mkdir /datadisks/disk1
 fi
 
-PARTITION=$(printf "%s1" "$DISKNAME"
+PARTITION=$(printf "%s1" "$DISKNAME")
 mount /dev/$PARTITION /datadisks/disk1
 echo "Datadrive mounted"
 
