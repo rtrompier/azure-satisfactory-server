@@ -55,23 +55,23 @@ chmod +x /usr/local/bin/docker-compose
 
 
 
-# # Inialize Disk if necessary
-# curl -o /tmp/vm-disk-utils-0.1.sh https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh
-# chmod +x /tmp/vm-disk-utils-0.1.sh
-# bash /tmp/vm-disk-utils-0.1.sh
+# Inialize Disk if necessary
+curl -o /tmp/vm-disk-utils-0.1.sh https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh
+chmod +x /tmp/vm-disk-utils-0.1.sh
+bash /tmp/vm-disk-utils-0.1.sh
 
-# # Extract diskname with LUM = 10
-# DISKNAME=$(lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep '.:.:.:${disk_lun}' | awk '{ print $1 }')
-# echo "Diskname found : $DISKNAME"
+# Extract diskname with LUM = 10
+DISKNAME=`lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep '.:.:.:${disk_lun}' | awk '{ print $1 }'`
+echo "Diskname found : $DISKNAME"
 
-# # Create directory 
-# if [[ -d "/datadrive" ]]; then
-#     echo "datadrive directory found"
-# else
-#     echo "datadrive directory not found, create it"
-#     mkdir /datadrive
-# fi
+# Create directory 
+if [[ -d "/datadrive" ]]; then
+    echo "datadrive directory found"
+else
+    echo "datadrive directory not found, create it"
+    mkdir /datadrive
+fi
 
-# PARTITION=$(printf "%s1" "$DISKNAME"
-# mount /dev/$PARTITION /datadrive
-# echo "Datadrive mounted"
+PARTITION=$(printf "%s1" "$DISKNAME"
+mount /dev/$PARTITION /datadrive
+echo "Datadrive mounted"
