@@ -60,7 +60,7 @@ bash /tmp/vm-disk-utils-0.1.sh
 
 # Extract diskname with LUM = 10
 DISKNAME=$(lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep '.:.:.:${disk_lun}' | awk '{ print $1 }')
-echo "Diskname found : ${DISKNAME}"
+echo "Diskname found : $DISKNAME"
 
 # Create directory 
 if [[ -d "/datadrive" ]]; then
