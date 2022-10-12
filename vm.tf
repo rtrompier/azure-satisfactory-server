@@ -41,9 +41,9 @@ resource "azurerm_managed_disk" "disk" {
   disk_size_gb         = 10
 }
 
-resource "azurerm_virtual_machine_data_disk_attachment" "example" {
-  managed_disk_id    = azurerm_managed_disk.disk.id
-  virtual_machine_id = azurerm_linux_virtual_machine.cicd.id
-  lun                = "10"
-  caching            = "ReadWrite"
-}
+# resource "azurerm_virtual_machine_data_disk_attachment" "example" {
+#   managed_disk_id    = azurerm_managed_disk.disk.id
+#   virtual_machine_id = azurerm_linux_virtual_machine.cicd.id
+#   lun                = "10"
+#   caching            = "ReadWrite"
+# }
