@@ -2,54 +2,56 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "Start script"
 
-## repo for git
-add-apt-repository -y ppa:git-core/ppa
+echo "hello world" > /tmp/hello.txt
 
-apt-get update -y
-apt-get upgrade -y
+# ## repo for git
+# add-apt-repository -y ppa:git-core/ppa
 
-# install dependencies
-apt-get install -y  \
-      curl \
-      sudo \
-      git \
-      tar \
-      unzip \
-      zip \
-      wget \
-      apt-transport-https \
-      ca-certificates \
-      software-properties-common \
-      make \
-      jq \
-      gnupg2 \
-      openssh-client
+# apt-get update -y
+# apt-get upgrade -y
 
-# docker
-echo "installing docker"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
-apt update -y
-apt-get install -y docker.io
+# # install dependencies
+# apt-get install -y  \
+#       curl \
+#       sudo \
+#       git \
+#       tar \
+#       unzip \
+#       zip \
+#       wget \
+#       apt-transport-https \
+#       ca-certificates \
+#       software-properties-common \
+#       make \
+#       jq \
+#       gnupg2 \
+#       openssh-client
 
-# curl -fsSL https://get.docker.com -o get-docker.sh
-# sh get-docker.sh
+# # docker
+# echo "installing docker"
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+# apt update -y
+# apt-get install -y docker.io
 
-# Enable docker.service
-systemctl is-active --quiet docker.service || systemctl start docker.service
-systemctl is-enabled --quiet docker.service || systemctl enable docker.service
+# # curl -fsSL https://get.docker.com -o get-docker.sh
+# # sh get-docker.sh
 
-if ! command -v docker &> /dev/null
-then
-    echo "docker could not be found"
-    exit 1
-fi
+# # Enable docker.service
+# systemctl is-active --quiet docker.service || systemctl start docker.service
+# systemctl is-enabled --quiet docker.service || systemctl enable docker.service
 
-# Install latest docker-compose from releases
-echo "installing docker compose"
-URL="https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"
-curl -L $URL -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+# if ! command -v docker &> /dev/null
+# then
+#     echo "docker could not be found"
+#     exit 1
+# fi
+
+# # Install latest docker-compose from releases
+# echo "installing docker compose"
+# URL="https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"
+# curl -L $URL -o /usr/local/bin/docker-compose
+# chmod +x /usr/local/bin/docker-compose
 
 
 

@@ -34,7 +34,7 @@ resource "azurerm_linux_virtual_machine" "cicd" {
   os_disk {
     name                      = "lvm-we-d-cicd-disk"
     caching                   = "ReadWrite"
-    storage_account_type      = "StandardSSD_LRS"
+    storage_account_type      = "Standard_D4as_v5"
     write_accelerator_enabled = false
   }
 
