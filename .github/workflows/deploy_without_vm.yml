@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
 
-name: Deploy Server
+name: Deploy Server (without VM))
 jobs:
   terraform:
     name: Deploy Server
