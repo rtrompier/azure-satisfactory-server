@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  satisfactory:
+    image: wolveix/satisfactory-server:latest
+    container_name: satisfactory
+    environment:
+      - MAXPLAYERS=4
+      - PUID=1000
+      - PGID=1000
+      - STEAMBETA=false
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+    ports:
+      - '7777:7777/udp'
+      - '15000:15000/udp'
+      - '15777:15777/udp'
