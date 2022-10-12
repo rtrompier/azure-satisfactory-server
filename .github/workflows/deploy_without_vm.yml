@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+
+name: Deploy Server
+jobs:
+  terraform:
+    name: Deploy Server
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - uses: kvrhdn/tfe-run@v1
+      with:
+        token: ${{ secrets.TF_TOKEN }}
+        workspace: satisfactory-server
+        type: apply
+        message: Deploy server from github pipeline
+        wait-for-completion: true
+        tf-vars: |
+          deploy_vm = false
