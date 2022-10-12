@@ -77,19 +77,17 @@ PARTITION=$(printf "%s1" "$DISKNAME")
 mount /dev/$PARTITION /datadisks/disk1
 echo "Datadrive mounted"
 
-
-echo "Hello world" > /datadisks/disk1/hello.txt
-
-
-# if [[ -d "/datadisks/disk1/satisfactory" ]]; then
-#     echo "satisfactory directory found"
-# else
-#     echo "satisfactory directory not found, create it"
-#     mkdir /datadisks/disk1/satisfactory
+# Init Satisfactory
+if [[ -d "/datadisks/disk1/satisfactory" ]]; then
+    echo "satisfactory directory found"
+else
+    echo "satisfactory directory not found, create it"
+    mkdir /datadisks/disk1/satisfactory
     
-#     mkdir /datadisks/disk1/satisfactory/config
-#     curl -o /datadisks/disk1/satisfactory/docker-compose.yml https://raw.githubusercontent.com/rtrompier/satisfactory-server-scaleway/main/satisfactory/docker-compose.yml
-    
-#     cd /datadisks/disk1/satisfactory
-#     docker-compose up -d
-# fi
+    mkdir /datadisks/disk1/satisfactory/config
+    curl -o /datadisks/disk1/satisfactory/docker-compose.yml https://raw.githubusercontent.com/rtrompier/satisfactory-server-scaleway/main/satisfactory/docker-compose.yml
+fi
+
+# Start Satisfactory server
+cd /datadisks/disk1/satisfactory
+docker-compose up -d
