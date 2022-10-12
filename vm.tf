@@ -1,22 +1,3 @@
-resource "azurerm_public_ip" "ip" {
-  name                = "pip-we-d-cicd"
-  resource_group_name = azurerm_resource_group.ci.name
-  location            = azurerm_resource_group.ci.location
-  allocation_method   = "Static"
-}
-
-resource "azurerm_network_interface" "main" {
-  name                = "nic-we-d-cicd"
-  location            = azurerm_resource_group.ci.location
-  resource_group_name = azurerm_resource_group.ci.name
-
-  ip_configuration {
-    name                          = "internal"
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.ip.id
-  }
-}
-
 resource "azurerm_linux_virtual_machine" "cicd" {
   name                            = "lvm-we-d-cicd"
   location                        = azurerm_resource_group.ci.location
