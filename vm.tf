@@ -10,7 +10,7 @@ resource "azurerm_linux_virtual_machine" "cicd" {
   name                            = "lvm-we-d-cicd"
   location                        = azurerm_resource_group.ci.location
   resource_group_name             = azurerm_resource_group.ci.name
-  size                            = "Standard_D2s_v4"
+  size                            = "Standard_D4as_v5"
   admin_username                  = "adminuser"
   disable_password_authentication = true
   network_interface_ids = [
@@ -34,7 +34,7 @@ resource "azurerm_linux_virtual_machine" "cicd" {
   os_disk {
     name                      = "lvm-we-d-cicd-disk"
     caching                   = "ReadWrite"
-    storage_account_type      = "Standard_D4as_v5"
+    storage_account_type      = "StandardSSD_LRS"
     write_accelerator_enabled = false
   }
 
