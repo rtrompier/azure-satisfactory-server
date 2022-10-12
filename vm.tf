@@ -11,8 +11,9 @@ resource "azurerm_network_interface" "main" {
   resource_group_name = azurerm_resource_group.ci.name
 
   ip_configuration {
-    name                 = "internal"
-    public_ip_address_id = azurerm_public_ip.ip.id
+    name                          = "internal"
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.ip.id
   }
 }
 
