@@ -65,13 +65,16 @@ DISKNAME=`lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep '.:.:.:${disk_lun}' | awk '{
 echo "Diskname found : $DISKNAME"
 
 # Create directory 
-if [[ -d "/datadrive" ]]; then
-    echo "datadrive directory found"
+if [[ -d "/datadisks/disk1" ]]; then
+    echo "/datadisks/disk1 directory found"
 else
-    echo "datadrive directory not found, create it"
-    mkdir /datadrive
+    echo "/datadisks/disk1 directory not found, create it"
+    mkdir /datadisks/disk1
 fi
 
 PARTITION=$(printf "%s1" "$DISKNAME"
-mount /dev/$PARTITION /datadrive
+mount /dev/$PARTITION /datadisks/disk1
 echo "Datadrive mounted"
+
+
+echo "Hello world" > /datadisks/disk1/hello.txt
