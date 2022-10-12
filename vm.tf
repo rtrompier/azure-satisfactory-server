@@ -40,14 +40,14 @@ resource "azurerm_linux_virtual_machine" "cicd" {
 
 }
 
-resource "azurerm_managed_disk" "disk" {
-  name                 = "lvm-we-d-cicd-datadisk"
-  location             = azurerm_resource_group.ci.location
-  resource_group_name  = azurerm_resource_group.ci.name
-  storage_account_type = "Standard_LRS"
-  create_option        = "Empty"
-  disk_size_gb         = 10
-}
+# resource "azurerm_managed_disk" "disk" {
+#   name                 = "lvm-we-d-cicd-datadisk"
+#   location             = azurerm_resource_group.ci.location
+#   resource_group_name  = azurerm_resource_group.ci.name
+#   storage_account_type = "Standard_LRS"
+#   create_option        = "Empty"
+#   disk_size_gb         = 10
+# }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "disk_attachement" {
   count              = var.deploy_vm ? 1 : 0
